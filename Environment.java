@@ -7,16 +7,16 @@ import java.util.*;
  */
 public class Environment {
 	ArrayList<Food> foodList;
-	
+
 	private ArrayList<FoodFactory> facList;
 	public ArrayList<Entity> entities;// new ArrayList<Entity>();
 	ArrayList<Cell> cellList;
 	// public ArrayList<Cell> REHList;
 	 public ArrayList<String> names ;
 	 //public static ArrayList<String> namelist;
-	
-	 
-	
+
+
+
     /**
      * Default constructor
      */
@@ -59,41 +59,33 @@ public class Environment {
         random = new Random();
         foodCount = 500;
         FoodGenerator();
-       int tmp;
-       
-	    	for(int i = 0; i < foodCount; ++i)
-	    	{
-	    		tmp = random.nextInt(2);
-	    		foodList.add(facList.get(tmp).createFood(this));
-	    		foodList.add(facList.get(tmp).createFood(this));
-	    		entities.add(foodList.get(i));
-	    		
-	    	}
-	    	
-	    	
-	    	this.cellGenerator();
-	    	
+		LoopThroughFood();
+		this.cellGenerator();
     }
-    
-    
-    public void FoodGenerator(){
+
+	private void LoopThroughFood() {
+		int tmp;
+
+		for(int i = 0; i < foodCount; ++i)
+		{
+			tmp = random.nextInt(2);
+			foodList.add(facList.get(tmp).createFood(this));
+			foodList.add(facList.get(tmp).createFood(this));
+			entities.add(foodList.get(i));
+
+		}
+	}
+
+
+	public void FoodGenerator(){
     		random = new Random();
     		//foodCount = 500;
     		//random = new Random();
     		
     		foodCount = 200;
-        	int tmp;
-	    	for(int i = 0; i < foodCount; ++i)
-	    	{
-	    	  tmp = random.nextInt(2);
-	    		
-	    		foodList.add(facList.get(tmp).createFood(this));
-	    		foodList.add(facList.get(tmp).createFood(this));
-	    		entities.add(foodList.get(i));
-	    		
-	    	}
-	    	
-    }
+		LoopThroughFood();
+
+	}
     
     
     public void cellGenerator(){
